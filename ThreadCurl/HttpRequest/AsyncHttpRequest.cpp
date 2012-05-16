@@ -1,15 +1,31 @@
 //
 //  AsyncHttpRequest.cpp
+//  ThreadCurl
 //
-//  Created by mini xingcloud on 12-4-28.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  A lightweight crossplatform middleware for thread and http request coding. Support iOS/Android/Windows
 //
+//  Source code is hosted at:
+//      https://github.com/chuckzhang/ThreadCurl
+//
+
+/*
+ 
+ http://en.wikipedia.org/wiki/MIT_License
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+ */
+
 #include "AsyncHttpRequest.h"
 #include "curl/curl.h"
 
 AsyncHttpRequest *AsyncHttpRequest::m_pInstance = new AsyncHttpRequest();
 size_t postWriteData(void *recvBuffer,size_t size,size_t nmemb,void *userParam);
-void    AsyncHttpRequest::SendData(const char *buffer,Responder  responder)
+void    AsyncHttpRequest::SendData(const char *buffer,AsyncHttpRequestResponder  responder)
 {
     Lock loc(mMutex);
     RequestData *rd = new RequestData;
@@ -26,14 +42,13 @@ size_t postWriteData(void *recvBuffer,size_t size,size_t nmemb,void *userParam)
     
     return size*nmemb; 
 }
-void    AsyncHttpRequest::SetOption(const std::string & url, bool enableDebug,RequestType requestType )
+void AsyncHttpRequest::SetOption(const std::string & url,AsyncHttpRequest_RequestType requestType,bool enableDebug)
 {
     m_pInstance->url = url;
-    
     m_pInstance->requestType = requestType;
     m_pInstance->enableDebug = enableDebug;
 }
-int     AsyncHttpRequest::getMethodSend(const char *data,char *recv)
+int AsyncHttpRequest::getMethodSend(const char *data,char *recv)
 {
 
     std::string request(m_pInstance->url);
@@ -109,7 +124,7 @@ void AsyncHttpRequest::run()
 			char *revcData = new char[100000];
 			memset(revcData,0,100000);
             int code = -1;
-            if(m_pInstance->requestType ==GET)
+            if(m_pInstance->requestType ==AsyncHttpRequest_GET)
             {
                  code = getMethodSend(content->data,revcData);
             }
