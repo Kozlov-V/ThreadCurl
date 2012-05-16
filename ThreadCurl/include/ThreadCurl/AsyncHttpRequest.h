@@ -28,19 +28,22 @@
 #include<string>
 #include <list>
 //request callback function type 
-typedef void (*AsyncHttpRequestResponder)(void *param);
-
-struct RequestData
-{
-    AsyncHttpRequestResponder responder;
-    char * data;	
-};
-
 typedef enum
 {
     AsyncHttpRequest_GET,
     AsyncHttpRequest_POST
 }AsyncHttpRequest_RequestType;
+
+typedef void (*AsyncHttpRequestResponder)(void *param);
+
+struct AsyncHttpRequest_RequestData
+{
+    AsyncHttpRequestResponder responder;
+    char * data;
+	std::string url;
+    AsyncHttpRequest_RequestType requestType;
+};
+
 
 class AsyncHttpRequest :public Thread
 {
@@ -51,26 +54,25 @@ public:
      @param enableDebug  print debug message
      @param requestType request method type
      */
-    void    SetOption(const std::string & url,AsyncHttpRequest_RequestType requestType =AsyncHttpRequest_GET, bool enableDebug =false);
+    void    SetOption(bool enableDebug =false);
     
     /**
      @param buffer send data buffer
      @param responder  request callback 
      */
-    void    SendData(const char *buffer,AsyncHttpRequestResponder responder);
+    void    SendData(const char *buffer,AsyncHttpRequestResponder responder,const std::string & url,AsyncHttpRequest_RequestType requestType =AsyncHttpRequest_GET);
     
 protected:
     void    run();
 private:
-    std::string url;
-    AsyncHttpRequest_RequestType requestType;
-    bool enableDebug;
-	int    getMethodSend(const char *data,char *recv);
-	int    postSendData(const char *data,char *recv);
+
+    bool   enableDebug;
+	int    getMethodSend(const char *data,char *recv,const char *url);
+	int    postSendData(const char *data,char *recv,const char *url);
     static AsyncHttpRequest *m_pInstance;
     AsyncHttpRequest(){ start();}
     Mutex mMutex;
-    std::list<RequestData*> requestCache;
+    std::list<AsyncHttpRequest_RequestData*> requestCache;
 };
 
 #endif

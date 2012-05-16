@@ -25,12 +25,14 @@
 
 AsyncHttpRequest *AsyncHttpRequest::m_pInstance = new AsyncHttpRequest();
 size_t postWriteData(void *recvBuffer,size_t size,size_t nmemb,void *userParam);
-void    AsyncHttpRequest::SendData(const char *buffer,AsyncHttpRequestResponder  responder)
+void    AsyncHttpRequest::SendData(const char *buffer,AsyncHttpRequestResponder  responder,const std::string & url,AsyncHttpRequest_RequestType requestType)
 {
     Lock loc(mMutex);
-    RequestData *rd = new RequestData;
+    AsyncHttpRequest_RequestData *rd = new AsyncHttpRequest_RequestData;
     rd->responder = responder;
     rd->data = const_cast<char*>(buffer);
+    rd->requestType = requestType;
+    rd->url = url;
     
     requestCache.push_back(rd);
 }
@@ -42,16 +44,14 @@ size_t postWriteData(void *recvBuffer,size_t size,size_t nmemb,void *userParam)
     
     return size*nmemb; 
 }
-void AsyncHttpRequest::SetOption(const std::string & url,AsyncHttpRequest_RequestType requestType,bool enableDebug)
+void AsyncHttpRequest::SetOption(bool enableDebug)
 {
-    m_pInstance->url = url;
-    m_pInstance->requestType = requestType;
     m_pInstance->enableDebug = enableDebug;
 }
-int AsyncHttpRequest::getMethodSend(const char *data,char *recv)
+int AsyncHttpRequest::getMethodSend(const char *data,char *recv,const char *url)
 {
 
-    std::string request(m_pInstance->url);
+    std::string request(url);
 	
 	CURL* easy_handle=curl_easy_init();
 	
@@ -79,13 +79,13 @@ int AsyncHttpRequest::getMethodSend(const char *data,char *recv)
 	curl_free(encodedURL);
 	return code;
 }
-int    AsyncHttpRequest::postSendData(const char *data,char *recv)
+int    AsyncHttpRequest::postSendData(const char *data,char *recv,const char *url)
 {
 	CURL* easy_handle = curl_easy_init();
 	
 	char *encodedURL = curl_easy_escape(easy_handle,data, strlen(data));
 	
-	curl_easy_setopt(easy_handle,CURLOPT_URL,m_pInstance->url.c_str());
+	curl_easy_setopt(easy_handle,CURLOPT_URL,url);
 	
 	char *temp= new char[strlen(encodedURL)+6];
 	sprintf(temp,"param=%s",encodedURL);
@@ -117,21 +117,24 @@ void AsyncHttpRequest::run()
         
         if(requestCache.size()>0)
         {
-            RequestData* content=NULL;
+            AsyncHttpRequest_RequestData* content=NULL;
             content = requestCache.front();
             
-            requestCache.pop_front();//delete first element
+            
 			char *revcData = new char[100000];
 			memset(revcData,0,100000);
             int code = -1;
-            if(m_pInstance->requestType ==AsyncHttpRequest_GET)
+            if(content->requestType ==AsyncHttpRequest_GET)
             {
-                 code = getMethodSend(content->data,revcData);
+                 code = getMethodSend(content->data,revcData,content->url.c_str());
             }
             else 
             {
-                 code = postSendData(content->data,revcData);
+                 code = postSendData(content->data,revcData,content->url.c_str());
             }
+            
+            requestCache.pop_front();//delete first element
+            
 			if(content->responder !=NULL)
 			{
 				if(code == 0)
