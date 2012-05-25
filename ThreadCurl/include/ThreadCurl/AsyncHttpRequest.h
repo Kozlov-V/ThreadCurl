@@ -44,7 +44,12 @@ struct AsyncHttpRequest_RequestData
     AsyncHttpRequest_RequestType requestType;
 };
 
-
+typedef struct callbackData
+{
+    int index;
+    void *buffer;
+    int position;
+}CallbackData;
 class AsyncHttpRequest :public Thread
 {
 public:
