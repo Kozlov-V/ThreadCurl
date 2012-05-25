@@ -40,9 +40,8 @@ void    AsyncHttpRequest::SendData(const char *buffer,AsyncHttpRequestResponder 
 size_t postWriteData(void *recvBuffer,size_t size,size_t nmemb,void *userParam)
 {
 	char *temp = (char*)recvBuffer;
-	int length = strlen(temp);
     
-	memcpy((char*)userParam,temp,length);
+	memcpy((char*)userParam,temp,size*nmemb);
     
     return size*nmemb; 
 }
@@ -121,7 +120,6 @@ void AsyncHttpRequest::run()
         {
             AsyncHttpRequest_RequestData* content=NULL;
             content = requestCache.front();
-            
             
 			char *revcData = new char[100000];
 			memset(revcData,0,100000);
