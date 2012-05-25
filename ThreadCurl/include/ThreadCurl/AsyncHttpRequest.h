@@ -46,7 +46,6 @@ struct AsyncHttpRequest_RequestData
 
 typedef struct callbackData
 {
-    int index;
     void *buffer;
     int position;
 }CallbackData;

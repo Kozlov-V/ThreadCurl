@@ -49,7 +49,6 @@ size_t postWriteData(void *recvBuffer,size_t size,size_t nmemb,void *userParam)
     
     cba->position +=size*nmemb;
 
-
     return size*nmemb; 
 }
 void AsyncHttpRequest::SetOption(bool enableDebug)
@@ -70,11 +69,9 @@ int AsyncHttpRequest::getMethodSend(const char *data,char *recv,const char *url)
 	if(m_pInstance->enableDebug)
         curl_easy_setopt(easy_handle, CURLOPT_VERBOSE,1L);/*open comment when debug mode.*/
 	
-    static int index =0;
-    index ++;
     CallbackData *cba = (CallbackData*)malloc(sizeof(CallbackData));
     cba->buffer = (char*)malloc(100000);
-    cba->index = index;
+   
     cba->position = 0;
 	curl_easy_setopt(easy_handle,CURLOPT_URL,request.c_str());
 	//curl_easy_setopt(easy_handle,CURLOPT_HTTPHEADER,header);
@@ -87,7 +84,7 @@ int AsyncHttpRequest::getMethodSend(const char *data,char *recv,const char *url)
 	CURLcode code=curl_easy_perform(easy_handle);//
 	
     memcpy(recv,cba->buffer,cba->position);
-    printf("%d\n",cba->position);
+    //printf("%d\n",cba->position);
     free(cba->buffer);
     free(cba);
   
@@ -146,7 +143,6 @@ void AsyncHttpRequest::run()
             if(content->requestType ==AsyncHttpRequest_GET)
             {
                  code = getMethodSend(content->data,revcData,content->url.c_str());
-                printf("%s\n",revcData);
             }
             else 
             {
