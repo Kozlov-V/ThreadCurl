@@ -31,6 +31,7 @@ void    AsyncHttpRequest::SendData(const char *buffer,AsyncHttpRequestResponder 
     AsyncHttpRequest_RequestData *rd = new AsyncHttpRequest_RequestData;
     rd->responder = responder;
     rd->data = const_cast<char*>(buffer);
+   
     rd->requestType = requestType;
     rd->url = url;
     
@@ -40,6 +41,7 @@ size_t postWriteData(void *recvBuffer,size_t size,size_t nmemb,void *userParam)
 {
 	char *temp = (char*)recvBuffer;
 	int length = strlen(temp);
+    
 	memcpy((char*)userParam,temp,length);
     
     return size*nmemb; 
@@ -65,7 +67,7 @@ int AsyncHttpRequest::getMethodSend(const char *data,char *recv,const char *url)
 	
 	curl_easy_setopt(easy_handle,CURLOPT_URL,request.c_str());
 	//curl_easy_setopt(easy_handle,CURLOPT_HTTPHEADER,header);
-	
+	curl_easy_setopt(easy_handle,CURLOPT_HTTP_TRANSFER_DECODING,1);
 	curl_easy_setopt(easy_handle,CURLOPT_WRITEFUNCTION,postWriteData);//receive callback function
 	//char *revcData = new char[100000];
 	curl_easy_setopt(easy_handle,CURLOPT_WRITEDATA,recv);
