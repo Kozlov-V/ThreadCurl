@@ -156,13 +156,16 @@ void AsyncHttpRequest::run()
 				if(code == 0)
 				{
 					content->responder(revcData);//TODO
+                    revcData = NULL;
 				}
 				else 
 				{
 					content->responder(NULL);
 				}
 			}
-            
+            delete content;          
+            if(revcData)
+                delete revcData;
         }
     }
 }
