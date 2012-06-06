@@ -16,6 +16,8 @@
 		2D27D7DD1563B44B00233446 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D27D7D91563B44B00233446 /* Common.h */; };
 		2D27D7DE1563B44B00233446 /* Mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D27D7DA1563B44B00233446 /* Mutex.h */; };
 		2D27D7DF1563B44B00233446 /* Thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D27D7DB1563B44B00233446 /* Thread.h */; };
+		9037D7F5157F0B2000526B9B /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 9037D7F4157F0B2000526B9B /* md5.h */; };
+		9037D7F8157F0B2B00526B9B /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9037D7F7157F0B2B00526B9B /* md5.cpp */; };
 		90935C721563A416003AD84F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90935C711563A416003AD84F /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		2D27D7D91563B44B00233446 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ThreadCurl/include/ThreadCurl/Common.h; sourceTree = SOURCE_ROOT; };
 		2D27D7DA1563B44B00233446 /* Mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mutex.h; path = ThreadCurl/include/ThreadCurl/Mutex.h; sourceTree = SOURCE_ROOT; };
 		2D27D7DB1563B44B00233446 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Thread.h; path = ThreadCurl/include/ThreadCurl/Thread.h; sourceTree = SOURCE_ROOT; };
+		9037D7F4157F0B2000526B9B /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md5.h; path = ThreadCurl/include/ThreadCurl/md5.h; sourceTree = SOURCE_ROOT; };
+		9037D7F7157F0B2B00526B9B /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
 		90935C6E1563A416003AD84F /* libThreadCurl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libThreadCurl.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		90935C711563A416003AD84F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		90935C7F1563A416003AD84F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -52,6 +56,8 @@
 		2D27D7BE1563B19100233446 /* posixthread */ = {
 			isa = PBXGroup;
 			children = (
+				9037D7F7157F0B2B00526B9B /* md5.cpp */,
+				9037D7F4157F0B2000526B9B /* md5.h */,
 				2D27D7D91563B44B00233446 /* Common.h */,
 				2D27D7DA1563B44B00233446 /* Mutex.h */,
 				2D27D7DB1563B44B00233446 /* Thread.h */,
@@ -113,6 +119,7 @@
 				2D27D7DD1563B44B00233446 /* Common.h in Headers */,
 				2D27D7DE1563B44B00233446 /* Mutex.h in Headers */,
 				2D27D7DF1563B44B00233446 /* Thread.h in Headers */,
+				9037D7F5157F0B2000526B9B /* md5.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +176,7 @@
 				2D27D7C71563B19100233446 /* Mutex.cpp in Sources */,
 				2D27D7C91563B19100233446 /* Thread.cpp in Sources */,
 				2D27D7CE1563B37700233446 /* AsyncHttpRequest.cpp in Sources */,
+				9037D7F8157F0B2B00526B9B /* md5.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +187,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -189,12 +200,14 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv6 armv7";
+				"VALID_ARCHS[sdk=*]" = "";
 			};
 			name = Debug;
 		};
@@ -202,7 +215,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -212,6 +228,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;
 		};
@@ -221,17 +238,23 @@
 				ARCHS = (
 					"\barmv6",
 					armv7,
-					i386,
 				);
 				DSTROOT = /tmp/AsyncHttpRequest.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(OTHER_CFLAGS)";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/support/\"";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/support\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "$(OTHER_CFLAGS)";
 				PRODUCT_NAME = ThreadCurl;
 				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = NO;
+				VALID_ARCHS = "armv6 armv7";
+				"VALID_ARCHS[sdk=*]" = "armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -241,17 +264,22 @@
 				ARCHS = (
 					"\barmv6",
 					armv7,
-					i386,
 				);
 				DSTROOT = /tmp/AsyncHttpRequest.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(OTHER_CFLAGS)";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/support/\"";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/support\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "$(OTHER_CFLAGS)";
 				PRODUCT_NAME = ThreadCurl;
 				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = NO;
+				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;
 		};

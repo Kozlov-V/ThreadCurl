@@ -27,6 +27,10 @@
 #include "ThreadCurl/Mutex.h"
 #include<string>
 #include <list>
+
+//configure MD5 private key
+#define MD5PRIVATEKEY "5cf202f067ik012ecae31edb0f3c16bhOM"
+
 //request callback function type 
 typedef enum
 {
@@ -65,6 +69,13 @@ public:
      @param responder  request callback 
      */
     void    SendData(const char *buffer,AsyncHttpRequestResponder responder,const std::string & url,AsyncHttpRequest_RequestType requestType =AsyncHttpRequest_GET);
+    
+    /**
+     @param result  out value of createMD5 key
+     @param argNumber key number 
+     @param ...       pass in key/value
+     */
+    void CreateMD5Key(char *result,int argNumber,...);
     
 protected:
     void    run();
