@@ -34,7 +34,7 @@ unsigned __stdcall
 #elif HAVE_PTHREAD
 void
 #endif
-threadLoop (void * t)
+ThreadCallBack (void * t)
 {
     (reinterpret_cast<TCThread*>(t))->run();
 #if defined WIN32
@@ -79,7 +79,7 @@ TCThread::start ()
     if (_thread == 0)
         printf("%s\n", "Cannot create new thread");
 #elif HAVE_PTHREAD
-    if (int error = ::pthread_create (&_thread, 0, Start (threadLoop), this))
+    if (int error = ::pthread_create (&_thread, 0, Start (ThreadCallBack), this))
         printf("%s (%d)\n", "Cannot create new thread", error);
 #else
     printf("%s\n", "Threads not supported on this platform");
