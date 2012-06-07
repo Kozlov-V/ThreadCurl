@@ -20,8 +20,8 @@
  
  */
 
-#ifndef POSIX_CONFIG_H
-#define POSIX_CONFIG_H
+#ifndef TC_CONFIG_H
+#define TC_CONFIG_H
 
 #ifdef WIN32
 #define HAVE_PTHREAD 0

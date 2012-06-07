@@ -22,6 +22,7 @@
 
 #include "AsyncHttpRequest.h"
 #include "curl/curl.h"
+#include "cJSON.h"
 #include "md5.h"
 #include<map>
 
@@ -29,7 +30,7 @@ AsyncHttpRequest *AsyncHttpRequest::m_pInstance = new AsyncHttpRequest();
 size_t postWriteData(void *recvBuffer,size_t size,size_t nmemb,void *userParam);
 void    AsyncHttpRequest::SendData(const char *buffer,AsyncHttpRequestResponder  responder,const std::string & url,AsyncHttpRequest_RequestType requestType)
 {
-    Lock loc(mMutex);
+    TCLock loc(mMutex);
     AsyncHttpRequest_RequestData *rd = new AsyncHttpRequest_RequestData;
     rd->responder = responder;
     rd->data = const_cast<char*>(buffer);
@@ -211,7 +212,51 @@ void AsyncHttpRequest::CreateMD5Key(char *result,int argNumber,...)
     va_end(arg_ptr);
 }	
 
-
+void AsyncHttpRequest::CreateMD5KeyFromCJSON(char *result,...)
+{
+    va_list arg_ptr;
+    va_start(arg_ptr, result);
+    std::map<std::string,std::string> ms;
+    cJSON * value=va_arg(arg_ptr,cJSON*);
+    cJSON * firstChild = value->child;
+    while (firstChild) {
+        switch (firstChild->type) {
+            case cJSON_String:
+                ms[firstChild->string] = firstChild->valuestring;
+                break;
+            case cJSON_Number:
+                char buff[10];
+                memset(&buff, 0, 10);
+                sprintf(buff, "%d",firstChild->valueint);
+                ms[firstChild->string] = buff;
+                break;
+            default:
+                break;
+        }
+        
+        firstChild=firstChild->next;
+    }
+    va_end(arg_ptr);
+    
+    std::string sigSeed;
+    
+    for(std::map<std::string,std::string>::iterator iter =ms.begin(); iter!= ms.end();iter++)
+    {
+        sigSeed.append(iter->second);
+    }
+    sigSeed.append(MD5PRIVATEKEY);//
+    
+    unsigned char md5Result[16] = {0};
+    CMD5 md5;
+    md5.Process((unsigned char*)sigSeed.c_str(), strlen(sigSeed.c_str()), md5Result);
+    
+    char strSig[128] = {0};
+    for (int i = 0; i < 16; i++)
+    {
+        sprintf(strSig + i*2, "%02x", *(md5Result + i));
+    }
+    strcpy(result,strSig);
+}
 
 
 

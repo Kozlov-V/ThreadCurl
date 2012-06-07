@@ -7,183 +7,197 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D27D7B91563B0E000233446 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D27D7B71563B0E000233446 /* libcurl.a */; };
-		2D27D7BA1563B0E000233446 /* libzlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D27D7B81563B0E000233446 /* libzlib.a */; };
-		2D27D7C71563B19100233446 /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D27D7C01563B19100233446 /* Mutex.cpp */; };
-		2D27D7C91563B19100233446 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D27D7C21563B19100233446 /* Thread.cpp */; };
-		2D27D7CE1563B37700233446 /* AsyncHttpRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D27D7CC1563B37700233446 /* AsyncHttpRequest.cpp */; };
-		2D27D7DC1563B44B00233446 /* AsyncHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D27D7D81563B44B00233446 /* AsyncHttpRequest.h */; };
-		2D27D7DD1563B44B00233446 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D27D7D91563B44B00233446 /* Common.h */; };
-		2D27D7DE1563B44B00233446 /* Mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D27D7DA1563B44B00233446 /* Mutex.h */; };
-		2D27D7DF1563B44B00233446 /* Thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D27D7DB1563B44B00233446 /* Thread.h */; };
-		9037D7F5157F0B2000526B9B /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 9037D7F4157F0B2000526B9B /* md5.h */; };
-		9037D7F8157F0B2B00526B9B /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9037D7F7157F0B2B00526B9B /* md5.cpp */; };
-		90935C721563A416003AD84F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90935C711563A416003AD84F /* Foundation.framework */; };
+		2DA3D5E01580962400B07E76 /* AsyncHttpRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA3D5D61580962400B07E76 /* AsyncHttpRequest.cpp */; };
+		2DA3D5E11580962400B07E76 /* AsyncHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA3D5D91580962400B07E76 /* AsyncHttpRequest.h */; };
+		2DA3D5E21580962400B07E76 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA3D5DA1580962400B07E76 /* Common.h */; };
+		2DA3D5E31580962400B07E76 /* Mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA3D5DB1580962400B07E76 /* Mutex.h */; };
+		2DA3D5E41580962400B07E76 /* Thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA3D5DC1580962400B07E76 /* Thread.h */; };
+		2DA3D5E51580962400B07E76 /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA3D5DE1580962400B07E76 /* Mutex.cpp */; };
+		2DA3D5E61580962400B07E76 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA3D5DF1580962400B07E76 /* Thread.cpp */; };
+		2DA3D5EC1580966800B07E76 /* cJSON.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DA3D5E81580966800B07E76 /* cJSON.c */; };
+		2DA3D5ED1580966800B07E76 /* cJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA3D5E91580966800B07E76 /* cJSON.h */; };
+		2DA3D5EE1580966800B07E76 /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA3D5EA1580966800B07E76 /* md5.cpp */; };
+		2DA3D5EF1580966800B07E76 /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA3D5EB1580966800B07E76 /* md5.h */; };
+		90ABF1CB1574E721001F0F06 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90ABF1CA1574E721001F0F06 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D27D7B71563B0E000233446 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = support/libcurl.a; sourceTree = "<group>"; };
-		2D27D7B81563B0E000233446 /* libzlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzlib.a; path = support/libzlib.a; sourceTree = "<group>"; };
-		2D27D7C01563B19100233446 /* Mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mutex.cpp; sourceTree = "<group>"; };
-		2D27D7C21563B19100233446 /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
-		2D27D7CC1563B37700233446 /* AsyncHttpRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AsyncHttpRequest.cpp; sourceTree = "<group>"; };
-		2D27D7D81563B44B00233446 /* AsyncHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncHttpRequest.h; path = ThreadCurl/include/ThreadCurl/AsyncHttpRequest.h; sourceTree = SOURCE_ROOT; };
-		2D27D7D91563B44B00233446 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ThreadCurl/include/ThreadCurl/Common.h; sourceTree = SOURCE_ROOT; };
-		2D27D7DA1563B44B00233446 /* Mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mutex.h; path = ThreadCurl/include/ThreadCurl/Mutex.h; sourceTree = SOURCE_ROOT; };
-		2D27D7DB1563B44B00233446 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Thread.h; path = ThreadCurl/include/ThreadCurl/Thread.h; sourceTree = SOURCE_ROOT; };
-		9037D7F4157F0B2000526B9B /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md5.h; path = ThreadCurl/include/ThreadCurl/md5.h; sourceTree = SOURCE_ROOT; };
-		9037D7F7157F0B2B00526B9B /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
-		90935C6E1563A416003AD84F /* libThreadCurl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libThreadCurl.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		90935C711563A416003AD84F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		90935C7F1563A416003AD84F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		90935C811563A416003AD84F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		2DA3D5D61580962400B07E76 /* AsyncHttpRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AsyncHttpRequest.cpp; sourceTree = "<group>"; };
+		2DA3D5D91580962400B07E76 /* AsyncHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncHttpRequest.h; path = ../include/ThreadCurl/AsyncHttpRequest.h; sourceTree = "<group>"; };
+		2DA3D5DA1580962400B07E76 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../include/ThreadCurl/Common.h; sourceTree = "<group>"; };
+		2DA3D5DB1580962400B07E76 /* Mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mutex.h; path = ../include/ThreadCurl/Mutex.h; sourceTree = "<group>"; };
+		2DA3D5DC1580962400B07E76 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Thread.h; path = ../include/ThreadCurl/Thread.h; sourceTree = "<group>"; };
+		2DA3D5DE1580962400B07E76 /* Mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mutex.cpp; sourceTree = "<group>"; };
+		2DA3D5DF1580962400B07E76 /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
+		2DA3D5E81580966800B07E76 /* cJSON.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cJSON.c; path = support/cJSON.c; sourceTree = "<group>"; };
+		2DA3D5E91580966800B07E76 /* cJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cJSON.h; path = support/cJSON.h; sourceTree = "<group>"; };
+		2DA3D5EA1580966800B07E76 /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = md5.cpp; path = support/md5.cpp; sourceTree = "<group>"; };
+		2DA3D5EB1580966800B07E76 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md5.h; path = support/md5.h; sourceTree = "<group>"; };
+		90ABF1C71574E721001F0F06 /* libThreadCurl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libThreadCurl.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		90ABF1CA1574E721001F0F06 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		90ABF1D81574E721001F0F06 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		90ABF1DA1574E721001F0F06 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		90935C6B1563A416003AD84F /* Frameworks */ = {
+		90ABF1C41574E721001F0F06 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90935C721563A416003AD84F /* Foundation.framework in Frameworks */,
-				2D27D7B91563B0E000233446 /* libcurl.a in Frameworks */,
-				2D27D7BA1563B0E000233446 /* libzlib.a in Frameworks */,
+				90ABF1CB1574E721001F0F06 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D27D7BE1563B19100233446 /* posixthread */ = {
+		2DA3D5D51580962400B07E76 /* HttpRequest */ = {
 			isa = PBXGroup;
 			children = (
-				9037D7F7157F0B2B00526B9B /* md5.cpp */,
-				9037D7F4157F0B2000526B9B /* md5.h */,
-				2D27D7D91563B44B00233446 /* Common.h */,
-				2D27D7DA1563B44B00233446 /* Mutex.h */,
-				2D27D7DB1563B44B00233446 /* Thread.h */,
-				2D27D7C01563B19100233446 /* Mutex.cpp */,
-				2D27D7C21563B19100233446 /* Thread.cpp */,
+				2DA3D5D91580962400B07E76 /* AsyncHttpRequest.h */,
+				2DA3D5D61580962400B07E76 /* AsyncHttpRequest.cpp */,
 			);
-			name = posixthread;
-			path = ThreadCurl/posixthread;
+			path = HttpRequest;
 			sourceTree = "<group>";
 		};
-		2D27D7CB1563B37700233446 /* HttpRequest */ = {
+		2DA3D5DD1580962400B07E76 /* posixthread */ = {
 			isa = PBXGroup;
 			children = (
-				2D27D7D81563B44B00233446 /* AsyncHttpRequest.h */,
-				2D27D7CC1563B37700233446 /* AsyncHttpRequest.cpp */,
+				2DA3D5DA1580962400B07E76 /* Common.h */,
+				2DA3D5DB1580962400B07E76 /* Mutex.h */,
+				2DA3D5DC1580962400B07E76 /* Thread.h */,
+				2DA3D5DE1580962400B07E76 /* Mutex.cpp */,
+				2DA3D5DF1580962400B07E76 /* Thread.cpp */,
 			);
-			name = HttpRequest;
-			path = ThreadCurl/HttpRequest;
+			path = posixthread;
 			sourceTree = "<group>";
 		};
-		90935C631563A416003AD84F = {
+		2DA3D5E71580965A00B07E76 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				2D27D7CB1563B37700233446 /* HttpRequest */,
-				2D27D7BE1563B19100233446 /* posixthread */,
-				90935C701563A416003AD84F /* Frameworks */,
-				90935C6F1563A416003AD84F /* Products */,
+				2DA3D5E81580966800B07E76 /* cJSON.c */,
+				2DA3D5E91580966800B07E76 /* cJSON.h */,
+				2DA3D5EA1580966800B07E76 /* md5.cpp */,
+				2DA3D5EB1580966800B07E76 /* md5.h */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		90ABF1BC1574E721001F0F06 = {
+			isa = PBXGroup;
+			children = (
+				2DA3D5E71580965A00B07E76 /* Support */,
+				90ABF1CC1574E721001F0F06 /* ThreadCurl */,
+				90ABF1C91574E721001F0F06 /* Frameworks */,
+				90ABF1C81574E721001F0F06 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		90935C6F1563A416003AD84F /* Products */ = {
+		90ABF1C81574E721001F0F06 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				90935C6E1563A416003AD84F /* libThreadCurl.a */,
+				90ABF1C71574E721001F0F06 /* libThreadCurl.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		90935C701563A416003AD84F /* Frameworks */ = {
+		90ABF1C91574E721001F0F06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2D27D7B71563B0E000233446 /* libcurl.a */,
-				2D27D7B81563B0E000233446 /* libzlib.a */,
-				90935C711563A416003AD84F /* Foundation.framework */,
-				90935C7F1563A416003AD84F /* SenTestingKit.framework */,
-				90935C811563A416003AD84F /* UIKit.framework */,
+				90ABF1CA1574E721001F0F06 /* Foundation.framework */,
+				90ABF1D81574E721001F0F06 /* SenTestingKit.framework */,
+				90ABF1DA1574E721001F0F06 /* UIKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		90ABF1CC1574E721001F0F06 /* ThreadCurl */ = {
+			isa = PBXGroup;
+			children = (
+				2DA3D5D51580962400B07E76 /* HttpRequest */,
+				2DA3D5DD1580962400B07E76 /* posixthread */,
+			);
+			path = ThreadCurl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		90935C6C1563A416003AD84F /* Headers */ = {
+		90ABF1C51574E721001F0F06 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D27D7DC1563B44B00233446 /* AsyncHttpRequest.h in Headers */,
-				2D27D7DD1563B44B00233446 /* Common.h in Headers */,
-				2D27D7DE1563B44B00233446 /* Mutex.h in Headers */,
-				2D27D7DF1563B44B00233446 /* Thread.h in Headers */,
-				9037D7F5157F0B2000526B9B /* md5.h in Headers */,
+				2DA3D5E11580962400B07E76 /* AsyncHttpRequest.h in Headers */,
+				2DA3D5E21580962400B07E76 /* Common.h in Headers */,
+				2DA3D5E31580962400B07E76 /* Mutex.h in Headers */,
+				2DA3D5E41580962400B07E76 /* Thread.h in Headers */,
+				2DA3D5ED1580966800B07E76 /* cJSON.h in Headers */,
+				2DA3D5EF1580966800B07E76 /* md5.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		90935C6D1563A416003AD84F /* ThreadCurl */ = {
+		90ABF1C61574E721001F0F06 /* ThreadCurl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 90935C921563A416003AD84F /* Build configuration list for PBXNativeTarget "ThreadCurl" */;
+			buildConfigurationList = 90ABF1EB1574E721001F0F06 /* Build configuration list for PBXNativeTarget "ThreadCurl" */;
 			buildPhases = (
-				90935C6A1563A416003AD84F /* Sources */,
-				90935C6B1563A416003AD84F /* Frameworks */,
-				90935C6C1563A416003AD84F /* Headers */,
+				90ABF1C31574E721001F0F06 /* Sources */,
+				90ABF1C41574E721001F0F06 /* Frameworks */,
+				90ABF1C51574E721001F0F06 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ThreadCurl;
-			productName = AsyncHttpRequest;
-			productReference = 90935C6E1563A416003AD84F /* libThreadCurl.a */;
+			productName = ThreadCurl;
+			productReference = 90ABF1C71574E721001F0F06 /* libThreadCurl.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		90935C651563A416003AD84F /* Project object */ = {
+		90ABF1BE1574E721001F0F06 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = 90935C681563A416003AD84F /* Build configuration list for PBXProject "ThreadCurl" */;
+			buildConfigurationList = 90ABF1C11574E721001F0F06 /* Build configuration list for PBXProject "ThreadCurl" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 90935C631563A416003AD84F;
-			productRefGroup = 90935C6F1563A416003AD84F /* Products */;
+			mainGroup = 90ABF1BC1574E721001F0F06;
+			productRefGroup = 90ABF1C81574E721001F0F06 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				90935C6D1563A416003AD84F /* ThreadCurl */,
+				90ABF1C61574E721001F0F06 /* ThreadCurl */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		90935C6A1563A416003AD84F /* Sources */ = {
+		90ABF1C31574E721001F0F06 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D27D7C71563B19100233446 /* Mutex.cpp in Sources */,
-				2D27D7C91563B19100233446 /* Thread.cpp in Sources */,
-				2D27D7CE1563B37700233446 /* AsyncHttpRequest.cpp in Sources */,
-				9037D7F8157F0B2B00526B9B /* md5.cpp in Sources */,
+				2DA3D5E01580962400B07E76 /* AsyncHttpRequest.cpp in Sources */,
+				2DA3D5E51580962400B07E76 /* Mutex.cpp in Sources */,
+				2DA3D5E61580962400B07E76 /* Thread.cpp in Sources */,
+				2DA3D5EC1580966800B07E76 /* cJSON.c in Sources */,
+				2DA3D5EE1580966800B07E76 /* md5.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		90935C901563A416003AD84F /* Debug */ = {
+		90ABF1E91574E721001F0F06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -200,18 +214,16 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "armv6 armv7";
-				"VALID_ARCHS[sdk=*]" = "";
 			};
 			name = Debug;
 		};
-		90935C911563A416003AD84F /* Release */ = {
+		90ABF1EA1574E721001F0F06 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -228,83 +240,73 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;
 		};
-		90935C931563A416003AD84F /* Debug */ = {
+		90ABF1EC1574E721001F0F06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					"\barmv6",
+					armv6,
 					armv7,
 				);
-				DSTROOT = /tmp/AsyncHttpRequest.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(OTHER_CFLAGS)";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/support/\"";
+				DSTROOT = /tmp/ThreadCurl.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				HEADER_SEARCH_PATHS = "${SRCROOT}/support";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/support\"",
+					"\"$(SRCROOT)\"",
+					"${SRCROOT}/support",
 				);
-				ONLY_ACTIVE_ARCH = NO;
-				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "$(OTHER_CFLAGS)";
-				PRODUCT_NAME = ThreadCurl;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = NO;
-				VALID_ARCHS = "armv6 armv7";
-				"VALID_ARCHS[sdk=*]" = "armv6 armv7";
 			};
 			name = Debug;
 		};
-		90935C941563A416003AD84F /* Release */ = {
+		90ABF1ED1574E721001F0F06 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					"\barmv6",
+					armv6,
 					armv7,
 				);
-				DSTROOT = /tmp/AsyncHttpRequest.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "$(OTHER_CFLAGS)";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/support/\"";
+				DSTROOT = /tmp/ThreadCurl.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				HEADER_SEARCH_PATHS = "${SRCROOT}/support";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/support\"",
+					"\"$(SRCROOT)\"",
+					"${SRCROOT}/support",
 				);
-				ONLY_ACTIVE_ARCH = NO;
-				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "$(OTHER_CFLAGS)";
-				PRODUCT_NAME = ThreadCurl;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = NO;
-				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		90935C681563A416003AD84F /* Build configuration list for PBXProject "ThreadCurl" */ = {
+		90ABF1C11574E721001F0F06 /* Build configuration list for PBXProject "ThreadCurl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				90935C901563A416003AD84F /* Debug */,
-				90935C911563A416003AD84F /* Release */,
+				90ABF1E91574E721001F0F06 /* Debug */,
+				90ABF1EA1574E721001F0F06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		90935C921563A416003AD84F /* Build configuration list for PBXNativeTarget "ThreadCurl" */ = {
+		90ABF1EB1574E721001F0F06 /* Build configuration list for PBXNativeTarget "ThreadCurl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				90935C931563A416003AD84F /* Debug */,
-				90935C941563A416003AD84F /* Release */,
+				90ABF1EC1574E721001F0F06 /* Debug */,
+				90ABF1ED1574E721001F0F06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 90935C651563A416003AD84F /* Project object */;
+	rootObject = 90ABF1BE1574E721001F0F06 /* Project object */;
 }

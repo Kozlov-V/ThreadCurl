@@ -21,7 +21,7 @@
  */
 #include "ThreadCurl/Mutex.h"
 #include<stdio.h>
-Mutex::Mutex ()
+TCMutex::TCMutex ()
 {
 #if defined WIN32
     ::InitializeCriticalSection (&_mutex);
@@ -31,7 +31,7 @@ Mutex::Mutex ()
 #endif
 }
 
-Mutex::~Mutex ()
+TCMutex::~TCMutex ()
 {
 #if defined WIN32
     ::DeleteCriticalSection (&_mutex);
@@ -42,7 +42,7 @@ Mutex::~Mutex ()
 }
 
 void
-Mutex::lock () const
+TCMutex::lock () const
 {
 #if defined WIN32
     ::EnterCriticalSection (&_mutex);
@@ -54,7 +54,7 @@ Mutex::lock () const
 
 
 void
-Mutex::unlock () const
+TCMutex::unlock () const
 {
 #if defined WIN32
     ::LeaveCriticalSection (&_mutex);

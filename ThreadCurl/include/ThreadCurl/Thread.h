@@ -20,17 +20,16 @@
  
  */
 
-#ifndef POSIX_THREAD_H
-#define POSIX_THREAD_H
+#ifndef TC_THREAD_H
+#define TC_THREAD_H
 #include "Common.h"
-bool supportsThreads();
 
-class Thread
+class TCThread
 {
 public:
     
-    Thread ();
-    virtual ~Thread ();
+    TCThread ();
+    virtual ~TCThread ();
     
     void		start ();
     virtual void	run () = 0;
@@ -43,7 +42,7 @@ private:
 	pthread_t _thread;
 #endif
     
-    void operator = (const Thread& t);	// not implemented
-    Thread (const Thread& t);		// not implemented
+    void operator = (const TCThread& t);	// not implemented
+    TCThread (const TCThread& t);		// not implemented
 };
 #endif

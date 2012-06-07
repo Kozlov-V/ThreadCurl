@@ -53,7 +53,7 @@ typedef struct callbackData
     void *buffer;
     int position;
 }CallbackData;
-class AsyncHttpRequest :public Thread
+class AsyncHttpRequest :public TCThread
 {
 public:
     static  AsyncHttpRequest* get_instance(){return m_pInstance;}
@@ -76,6 +76,11 @@ public:
      @param ...       pass in key/value
      */
     void CreateMD5Key(char *result,int argNumber,...);
+    /**
+     @param result  out value of createMD5 key
+     @param ...       pass in CJSON object, keys will be ordered alphabetically
+     */
+    void CreateMD5KeyFromCJSON(char *result,...);
     
 protected:
     void    run();
@@ -86,7 +91,7 @@ private:
 	int    postSendData(const char *data,char *recv,const char *url);
     static AsyncHttpRequest *m_pInstance;
     AsyncHttpRequest(){ start();}
-    Mutex mMutex;
+    TCMutex mMutex;
     std::list<AsyncHttpRequest_RequestData*> requestCache;
 };
 

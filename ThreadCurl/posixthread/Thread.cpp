@@ -21,15 +21,6 @@
  */
 #include "ThreadCurl/Thread.h"
 #include<stdio.h>
-bool
-supportsThreads ()
-{
-#if (defined WIN32) || HAVE_PTHREAD
-	return true;
-#else
-    return false;
-#endif
-}
 
 #if HAVE_PTHREAD
 extern "C"
@@ -45,14 +36,14 @@ void
 #endif
 threadLoop (void * t)
 {
-    (reinterpret_cast<Thread*>(t))->run();
+    (reinterpret_cast<TCThread*>(t))->run();
 #if defined WIN32
     _endthreadex (0);
     return 0;
 #endif
 }
 
-Thread::Thread ()
+TCThread::TCThread ()
 {
 #if (defined WIN32) || HAVE_PTHREAD
 #else
@@ -61,7 +52,7 @@ Thread::Thread ()
 }
 
 
-Thread::~Thread ()
+TCThread::~TCThread ()
 {
 #if defined WIN32
     DWORD status = ::WaitForSingleObject (_thread, INFINITE);
@@ -79,7 +70,7 @@ Thread::~Thread ()
 
 
 void
-Thread::start ()
+TCThread::start ()
 {
 #if defined WIN32
     unsigned id;

@@ -20,19 +20,19 @@
  
  */
 
-#ifndef POSIX_MUTEX_H
-#define POSIX_MUTEX_H
+#ifndef TC_MUTEX_H
+#define TC_MUTEX_H
 
 #include "Common.h"
 
-class Lock;
+class TCLock;
 
-class Mutex
+class TCMutex
 {
 public:
     
-    Mutex ();
-    virtual ~Mutex ();
+    TCMutex ();
+    virtual ~TCMutex ();
     
 private:
     
@@ -45,18 +45,18 @@ private:
 	mutable pthread_mutex_t _mutex;
 #endif
     
-    void operator = (const Mutex& M);	// not implemented
-    Mutex (const Mutex& M);		// not implemented
+    void operator = (const TCMutex& M);	// not implemented
+    TCMutex (const TCMutex& M);		// not implemented
     
-    friend class Lock;
+    friend class TCLock;
 };
 
 
-class Lock
+class TCLock
 {
 public:
     
-    Lock (const Mutex& m, bool autoLock = true):
+    TCLock (const TCMutex& m, bool autoLock = true):
 	_mutex (m),
 	_locked (false)
     {
@@ -67,7 +67,7 @@ public:
         }
     }
     
-    ~Lock ()
+    ~TCLock ()
     {
         if (_locked)
             _mutex.unlock();
@@ -92,7 +92,7 @@ public:
     
 private:
     
-    const Mutex &	_mutex;
+    const TCMutex &	_mutex;
     bool		_locked;
 };
 
