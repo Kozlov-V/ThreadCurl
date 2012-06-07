@@ -148,7 +148,7 @@ void AsyncHttpRequest::run()
             if(content->requestType ==AsyncHttpRequest_GET)
             {
                  code = getMethodSend(content->data,revcData,content->url.c_str());
-                printf("%s\n",revcData);
+                
             }
             else 
             {
