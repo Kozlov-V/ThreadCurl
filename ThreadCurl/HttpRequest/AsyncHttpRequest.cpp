@@ -89,7 +89,6 @@ int AsyncHttpRequest::getMethodSend(const char *data,char *recv,const char *url)
 	
     memcpy(recv,cba->buffer,cba->position);
     
-    printf("%d\n",cba->position);
     free(cba->buffer);
     free(cba);
   
