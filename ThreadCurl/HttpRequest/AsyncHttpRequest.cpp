@@ -1,4 +1,4 @@
-//
+ //
 //  AsyncHttpRequest.cpp
 //  ThreadCurl
 //
@@ -153,7 +153,10 @@ void AsyncHttpRequest::run()
             {
                  code = postSendData(content->data,revcData,content->url.c_str());
             }
-            
+            if(strlen(content->data)>0)
+            {
+                free(content->data);
+            }
             requestCache.pop_front();//delete first element
             
 			if(content->responder !=NULL)
