@@ -50,10 +50,24 @@ size_t postWriteData(void *recvBuffer,size_t size,size_t nmemb,void *userParam)
     CallbackData *cba = (CallbackData*)userParam;
 
     memcpy((char*)cba->buffer+cba->position,recvBuffer,size*nmemb);
-    
+     
     cba->position +=size*nmemb;
 
     return size*nmemb; 
+}
+size_t postRecvWriteData(void *recvBuffer,size_t size,size_t nmemb,void *userParam)
+{
+	//char *temp = (char*)recvBuffer;
+    
+	//memcpy((char*)userParam,temp,size*nmemb);
+    
+    CallbackData *cba = (CallbackData*)userParam;
+    
+    memcpy((char*)cba->buffer+cba->position,recvBuffer,size*nmemb);
+    
+    cba->position +=size*nmemb;
+    
+    return size*nmemb;
 }
 void AsyncHttpRequest::SetOption(bool enableDebug)
 {
@@ -81,9 +95,7 @@ int AsyncHttpRequest::getMethodSend(const char *data,char *recv,const char *url)
 	//curl_easy_setopt(easy_handle,CURLOPT_HTTPHEADER,header);
 	curl_easy_setopt(easy_handle,CURLOPT_HTTP_TRANSFER_DECODING,1);
 	curl_easy_setopt(easy_handle,CURLOPT_WRITEFUNCTION,postWriteData);//receive callback function
-	//char *revcData = new char[100000];
-    
-	//curl_easy_setopt(easy_handle,CURLOPT_WRITEDATA,recv);
+	
 	curl_easy_setopt(easy_handle,CURLOPT_WRITEDATA,cba);
 	CURLcode code=curl_easy_perform(easy_handle);//
 	
@@ -107,25 +119,38 @@ int    AsyncHttpRequest::postSendData(const char *data,char *recv,const char *ur
 	char *encodedURL = curl_easy_escape(easy_handle,data, strlen(data));
 	
 	curl_easy_setopt(easy_handle,CURLOPT_URL,url);
-	
-	char *temp= new char[strlen(encodedURL)+6];
-	sprintf(temp,"param=%s",encodedURL);
-	
+    
+	int encodeLength = strlen(encodedURL);
+	char *temp= new char[encodeLength+8];
+    memset(temp,0,encodeLength+8);
+	sprintf(temp,"params=%s",encodedURL);
+//	int tl = strlen(temp);
+    
 	curl_easy_setopt(easy_handle,CURLOPT_POSTFIELDS,temp);
 	
 	curl_easy_setopt(easy_handle,CURLOPT_POSTFIELDSIZE,strlen(temp));
 	
-	curl_easy_setopt(easy_handle,CURLOPT_WRITEFUNCTION,postWriteData);//receive callback function
+	curl_easy_setopt(easy_handle,CURLOPT_WRITEFUNCTION,postRecvWriteData);//receive callback function
 	
-	curl_easy_setopt(easy_handle,CURLOPT_WRITEDATA,recv);
-	
-    if(m_pInstance->enableDebug)
-        curl_easy_setopt(easy_handle,CURLOPT_POST,1);
+    CallbackData *cba = (CallbackData*)malloc(sizeof(CallbackData));
+    cba->buffer = (char*)malloc(100000);
     
-	curl_easy_setopt(easy_handle,CURLOPT_VERBOSE,1); /* open comment when debug mode.*/
+    cba->position = 0;
+
+	curl_easy_setopt(easy_handle,CURLOPT_WRITEDATA,cba);
+	
+//    if(m_pInstance->enableDebug)
+    curl_easy_setopt(easy_handle,CURLOPT_POST,1);
+    
+//	curl_easy_setopt(easy_handle,CURLOPT_VERBOSE,1); /* open comment when debug mode.*/
 	
 	CURLcode code=curl_easy_perform(easy_handle);
 
+    memcpy(recv,cba->buffer,cba->position);
+    
+    free(cba->buffer);
+    free(cba);
+    
 	curl_free(encodedURL);
 	curl_easy_cleanup(easy_handle);
 	return code;
